@@ -52,7 +52,7 @@
       "double"
     ],
     "semicolon": [
-      true,
+      false,
       "always"
     ],
     "switch-default": true,

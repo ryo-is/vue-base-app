@@ -37,8 +37,7 @@
     "tests/**/*.tsx"
   ],
   "exclude": [
-    "node_modules",
-    "tests"
+    "node_modules"
   ],
   "files": [
     "src/types.d.ts"

@@ -1,0 +1,14 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "vuevoteapp-20190410174407-authRole",
+            "UnauthRoleArn": "arn:aws:iam::795622185554:role/vuevoteapp-20190410174407-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::795622185554:role/vuevoteapp-20190410174407-authRole",
+            "Region": "ap-northeast-1",
+            "DeploymentBucketName": "vuevoteapp-20190410174407-deployment",
+            "UnauthRoleName": "vuevoteapp-20190410174407-unauthRole",
+            "StackName": "vuevoteapp-20190410174407",
+            "StackId": "arn:aws:cloudformation:ap-northeast-1:795622185554:stack/vuevoteapp-20190410174407/cdd3b4b0-5b6c-11e9-8a02-068e63cf27c0"
+        }
+    }
+}

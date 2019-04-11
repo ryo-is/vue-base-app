@@ -3,9 +3,11 @@
     router-view
 </template>
 
-<style>
+<style lang="scss">
+@import "./config/config_setting";
+
 body {
-  background-color: #2c3e50;
+  background-color: $basic-dark-color;
 }
 
 #app {
@@ -13,6 +15,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #fcfcfc;
+  color: $basic-light-color;
 }
 </style>

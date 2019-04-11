@@ -1,6 +1,37 @@
+@import "../../config/config_setting";
+
 .create {
   .title {
     font-size: 2rem;
     margin-top: 30px;
+  }
+
+  .create-vote-form {
+    margin-top: 20px;
+    position: relative;
+
+    .el-col {
+      left: 0;
+      margin: auto;
+      right: 0;
+      position: absolute;
+
+      .input {
+        margin: 20px 0;
+
+        .tag {
+          border-bottom: 3px solid $basic-green-color;
+          font-size: 1.2rem;
+          line-height: 40px;
+          margin-bottom: 10px;
+          text-align: left;
+        }
+
+        .el-input {
+          margin: auto;
+          width: 95%;
+        }
+      }
+    }
   }
 }

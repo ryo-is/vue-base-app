@@ -40,6 +40,6 @@
     "node_modules"
   ],
   "files": [
-    "src/types.d.ts"
+    "src/declare_modules.d.ts"
   ]
 }

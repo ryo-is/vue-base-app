@@ -7,6 +7,7 @@ export default class Create extends Vue {
   public description: string = "次の中から最も好きな果物を答えてください"
   public answerItems: string[] = ["りんご", "バナナ", "オレンジ"]
   public addAnswerItemText: string = ""
+  public selectableNumber: number = 1
 
   // 選択肢の追加
   public addAnswerItem() {

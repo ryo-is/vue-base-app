@@ -10,7 +10,7 @@
     margin-top: 20px;
     position: relative;
 
-    .el-col {
+    .input-area {
       left: 0;
       margin: auto;
       right: 0;
@@ -30,6 +30,36 @@
         .el-input {
           margin: auto;
           width: 95%;
+        }
+      }
+
+      .submit-button {
+        padding: 12px 24px;
+      }
+
+      .answer-items {
+        .answer {
+          font-size: 1.1rem;
+          line-height: 40px;
+          padding-left: 2rem;
+          text-align: left;
+
+          &::before {
+            content: "●";
+            color: $basic-green-color;
+            padding-right: 1rem;
+          }
+        }
+      }
+
+      .add-answer-area {
+        margin-top: 10px;
+
+        .add-answer-icon {
+          color: $basic-green-color;
+          cursor: pointer;
+          font-size: 36px;
+          margin-top: 2px;
         }
       }
     }

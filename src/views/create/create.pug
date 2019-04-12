@@ -1,14 +1,22 @@
 .create
   .title {{ title }}
   form.create-vote-form()
-    el-col(:xs="20", :sm="20", :md="16", :lg="13", :xl="11")
+    el-col.input-area(:xs="20", :sm="20", :md="16", :lg="13", :xl="11")
       .input
         .tag Main Title
-        el-input(type="text", v-model="newVoteTitle")
+        el-input(type="text", v-model="newEnqueteTitle")
       .input
         .tag Description
         el-input(type="text", v-model="description")
       .input
-        .tag Question Items
-        .question-items
+        .tag Answer Items
+        .answer-items
+          .answer(v-for="item, index in answerItems", :key="item") {{ item }}
+        el-row.add-answer-area
+          el-col(:span="23")
+            el-input.add-answer(type="text", v-model="addAnswerItemText")
+          el-col(:span="1")
+            font-awesome-icon.add-answer-icon(:icon="['fas', 'plus-circle']", @click="addAnswerItem()")
+      el-button.submit-button(type="primary" @click="submitCreateEnquete()") Submit
+
 

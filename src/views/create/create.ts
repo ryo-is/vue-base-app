@@ -1,4 +1,5 @@
 import { Component, Vue } from "vue-property-decorator"
+import { EnqueteAppAPIClass } from "@/gqlServices/enquete_app_api_service"
 
 @Component({})
 export default class Create extends Vue {
@@ -17,6 +18,7 @@ export default class Create extends Vue {
 
   // アンケート作成
   public submitCreateEnquete() {
-    console.log(this.answerItems)
+    EnqueteAppAPIClass.createEnquete(
+      this.enqueteTitle, this.description, this.answerItems, this.selectableNumber)
   }
 }

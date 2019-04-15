@@ -1,5 +1,9 @@
 import { API, graphqlOperation } from "aws-amplify"
-import { createEnqueteResultType } from "@/types"
+import {
+  EnqueteType,
+  CreateEnqueteResultType,
+  GetEnqueteResultType
+} from "@/types"
 
 const enqueteItems: string = `
 id
@@ -40,12 +44,31 @@ export class EnqueteAppAPIClass {
             }
           }
         `
-        const result: createEnqueteResultType
-          = await API.graphql(graphqlOperation(gqlParam)) as createEnqueteResultType
-        console.log(result)
+        await API.graphql(graphqlOperation(gqlParam)) as CreateEnqueteResultType
       } catch (err) {
         console.error(err)
       }
+  }
+
+  /**
+   * アンケート取得
+   * @param {String} enqueteId
+   */
+  public static async getEnquete(enqueteId: string): Promise<EnqueteType> {
+    try {
+      const gqlParam: string = `
+        query get {
+          getEnquete(id: "${enqueteId}") {
+            ${enqueteItems}
+          }
+        }
+      `
+      const result: GetEnqueteResultType
+        = await API.graphql(graphqlOperation(gqlParam)) as GetEnqueteResultType
+      return result.data.getEnquete
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   /**

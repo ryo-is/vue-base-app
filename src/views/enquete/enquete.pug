@@ -1,2 +1,6 @@
 .enquete
-  .enquete-title {{ enquete.enqueteTitle }}
+  .enquete-title {{ enqueteTitle }}
+  .enquete-description {{ description }}
+  el-checkbox-group.enquete-answers(v-model="selectedAnswers", :max="selectableNumber")
+    .checkbox-wrapper(v-for="item in answerItems", :key="item")
+      el-checkbox(:label="item")

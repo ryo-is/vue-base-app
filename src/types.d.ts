@@ -2,7 +2,7 @@ export interface EnqueteType {
   id?: string,
   enqueteTitle: string,
   description?: string,
-  answerItems: string,
+  answerItems: string[],
   selectableNumber: number
 }
 

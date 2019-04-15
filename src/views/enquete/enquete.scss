@@ -1,0 +1,55 @@
+@import "../../config/config_setting.scss";
+
+.enquete {
+  margin: 30px auto 0;
+  width: 50vw;
+
+  .enquete-title {
+    border-bottom: 3px solid $basic-green-color;
+    font-size: 2rem;
+    display: inline-block;
+    padding: 0 3rem;
+  }
+
+  .enquete-description {
+    font-size: 1.25rem;
+    margin: 20px 0;
+  }
+
+  .enquete-answers {
+
+    .checkbox-wrapper {
+      margin-bottom: 15px;
+      text-align: left;
+      width: 100%;
+    }
+
+    .el-checkbox {
+      color: $basic-light-color;
+
+      .el-checkbox__input {
+        position: absolute;
+
+        .el-checkbox__inner {
+          width: 16px;
+          height: 16px;
+
+          &::after {
+            border: 2px solid $basic-light-color;
+            border-left: 0;
+            border-top: 0;
+            left: 4px;
+            height: 9px;
+            top: 0;
+            width: 4px;
+          }
+        }
+      }
+
+      .el-checkbox__label {
+        font-size: 20px;
+        padding-left: 24px;
+      }
+    }
+  }
+}

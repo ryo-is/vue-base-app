@@ -3,6 +3,7 @@ import { EnqueteAppAPIClass } from "@/gqlServices/enquete_app_api_service"
 import {
   EnqueteType
 } from "@/types"
+import router from "@/router";
 
 @Component({})
 export default class Enquete extends Vue {
@@ -22,6 +23,8 @@ export default class Enquete extends Vue {
 
   public async created() {
     this.enquete = await EnqueteAppAPIClass.getEnquete(this.$route.params.enquete_id)
-    console.log(this.enquete)
+    if (this.enquete === null) {
+      router.push("/")
+    }
   }
 }

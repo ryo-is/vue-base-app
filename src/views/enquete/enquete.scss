@@ -46,9 +46,15 @@
       }
 
       .el-checkbox__label {
-        font-size: 20px;
+        font-size: 18px;
         padding-left: 24px;
       }
     }
+  }
+
+  .submit-btn {
+    font-size: 1rem;
+    margin-top: 20px;
+    padding: 10px 30px;
   }
 }

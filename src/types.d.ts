@@ -23,3 +23,11 @@ export interface EnqueteAnswerType {
   answer_time: string,
   answers: string[]
 }
+
+export interface QueryEnqueteAnswerResultType {
+  data: {
+    queryEnqueteAnswers: {
+      items: EnqueteAnswerType[]
+    }
+  }
+}

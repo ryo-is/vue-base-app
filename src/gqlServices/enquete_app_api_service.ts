@@ -3,7 +3,8 @@ import dyajs from "dayjs"
 import {
   EnqueteType,
   CreateEnqueteResultType,
-  GetEnqueteResultType
+  GetEnqueteResultType,
+  QueryEnqueteAnswerResultType
 } from "@/types"
 
 const enqueteItems: string = `
@@ -77,6 +78,11 @@ export class EnqueteAppAPIClass {
     }
   }
 
+  /**
+   * アンケート回答作成
+   * @param {String} id
+   * @param {String[]} answerItems
+   */
   public static async createEnqueteAnswer(
     id: string,
     answerItems: string[]
@@ -96,6 +102,29 @@ export class EnqueteAppAPIClass {
         }
       `
       await API.graphql(graphqlOperation(gqlParam))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  /**
+   * アンケート結果取得
+   * @param {String} id
+   */
+  public static async queryEnqueteAnswer(id: string) {
+    try {
+      const gqlParam: string = `
+        query query {
+          queryEnqueteAnswers(id: "${id}") {
+            items {
+              ${enqueteAnswerItems}
+            }
+          }
+        }
+      `
+      const result: QueryEnqueteAnswerResultType
+        = await API.graphql(graphqlOperation(gqlParam)) as QueryEnqueteAnswerResultType
+      console.log(result)
     } catch (err) {
       console.error(err)
     }

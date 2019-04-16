@@ -10,13 +10,17 @@ export default class Create extends Vue {
   public addAnswerItemText: string = ""
   public selectableNumber: number = 1
 
-  // 選択肢の追加
+  /**
+   * 選択肢の追加
+   */
   public addAnswerItem() {
     this.answerItems.push(this.addAnswerItemText)
     this.addAnswerItemText = ""
   }
 
-  // アンケート作成
+  /**
+   * アンケート作成
+   */
   public submitCreateEnquete() {
     EnqueteAppAPIClass.createEnquete(
       this.enqueteTitle, this.description, this.answerItems, this.selectableNumber)

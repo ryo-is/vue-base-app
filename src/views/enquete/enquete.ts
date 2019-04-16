@@ -8,6 +8,7 @@ import router from "@/router";
 @Component({})
 export default class Enquete extends Vue {
   public enquete: EnqueteType = null
+  public enqueteId: string = ""
   public enqueteTitle: string = ""
   public description: string = ""
   public answerItems: string[] = []
@@ -22,13 +23,18 @@ export default class Enquete extends Vue {
   }
 
   public async created() {
-    this.enquete = await EnqueteAppAPIClass.getEnquete(this.$route.params.enquete_id)
+    this.enqueteId = this.$route.params.enquete_id
+    this.enquete = await EnqueteAppAPIClass.getEnquete(this.enqueteId)
     if (this.enquete === null) {
       router.push("/")
     }
   }
 
-  public submitAnswers() {
-    EnqueteAppAPIClass.createEnqueteAnswer(this.$route.params.enquete_id, this.selectedAnswers)
+  /**
+   * アンケート回答
+   */
+  public async submitAnswers() {
+    await EnqueteAppAPIClass.createEnqueteAnswer(this.enqueteId, this.selectedAnswers)
+    await EnqueteAppAPIClass.queryEnqueteAnswer(this.enqueteId)
   }
 }

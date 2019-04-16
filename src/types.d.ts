@@ -17,3 +17,9 @@ export interface GetEnqueteResultType {
     getEnquete: EnqueteType
   }
 }
+
+export interface EnqueteAnswerType {
+  id: string,
+  answer_time: string,
+  answers: string[]
+}

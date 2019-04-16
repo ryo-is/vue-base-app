@@ -27,4 +27,8 @@ export default class Enquete extends Vue {
       router.push("/")
     }
   }
+
+  public submitAnswers() {
+    EnqueteAppAPIClass.createEnqueteAnswer(this.$route.params.enquete_id, this.selectedAnswers)
+  }
 }

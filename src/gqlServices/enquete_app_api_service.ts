@@ -1,4 +1,5 @@
 import { API, graphqlOperation } from "aws-amplify"
+import dyajs from "dayjs"
 import {
   EnqueteType,
   CreateEnqueteResultType,
@@ -11,6 +12,11 @@ enqueteTitle
 description
 answerItems
 selectableNumber
+`
+const enqueteAnswerItems: string = `
+id
+answer_time
+answers
 `
 
 export class EnqueteAppAPIClass {
@@ -27,27 +33,27 @@ export class EnqueteAppAPIClass {
     description: string,
     answerItems: string[],
     selectableNumberInput: number
-    ) {
-      try {
-        const descriptionInput: string | null = (description !== "") ? description : null
-        const gqlParam: string = `
-          mutation create {
-            createEnquete(
-              input: {
-                enqueteTitle: "${enqueteTitle}"
-                description: "${descriptionInput}"
-                answerItems: ${this.makeArrayBody(answerItems)}
-                selectableNumber: ${selectableNumberInput}
-              }
-            ) {
-              ${enqueteItems}
+  ) {
+    try {
+      const descriptionInput: string | null = (description !== "") ? description : null
+      const gqlParam: string = `
+        mutation create {
+          createEnquete(
+            input: {
+              enqueteTitle: "${enqueteTitle}"
+              description: "${descriptionInput}"
+              answerItems: ${this.makeArrayBody(answerItems)}
+              selectableNumber: ${selectableNumberInput}
             }
+          ) {
+            ${enqueteItems}
           }
-        `
-        await API.graphql(graphqlOperation(gqlParam)) as CreateEnqueteResultType
-      } catch (err) {
-        console.error(err)
-      }
+        }
+      `
+      await API.graphql(graphqlOperation(gqlParam)) as CreateEnqueteResultType
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   /**
@@ -66,6 +72,30 @@ export class EnqueteAppAPIClass {
       const result: GetEnqueteResultType
         = await API.graphql(graphqlOperation(gqlParam)) as GetEnqueteResultType
       return result.data.getEnquete
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  public static async createEnqueteAnswer(
+    id: string,
+    answerItems: string[]
+  ) {
+    try {
+      const gqlParam: string = `
+        mutation create {
+          createEnqueteAnswer(
+            input: {
+              id: "${id}"
+              answer_time: "${dyajs().format("YYYY/MM/DD HH:mm:ss")}"
+              answers: ${this.makeArrayBody(answerItems)}
+            }
+          ) {
+            ${enqueteAnswerItems}
+          }
+        }
+      `
+      await API.graphql(graphqlOperation(gqlParam))
     } catch (err) {
       console.error(err)
     }

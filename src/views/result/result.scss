@@ -1,0 +1,18 @@
+@import "../../config/config_setting.scss";
+
+.result {
+  margin: 30px auto 0;
+  width: 50vw;
+
+  .result-title {
+    border-bottom: 3px solid $basic-green-color;
+    font-size: 2rem;
+    display: inline-block;
+    padding: 0 3rem;
+  }
+
+  .result-description {
+    font-size: 1.25rem;
+    margin: 20px 0;
+  }
+}

@@ -52,8 +52,10 @@ export class EnqueteAppAPIClass {
         }
       `
       await API.graphql(graphqlOperation(gqlParam)) as CreateEnqueteResultType
+      alert("Create Answers Succeeded")
     } catch (err) {
       console.error(err)
+      alert("Create Answers Failed")
     }
   }
 
@@ -102,8 +104,10 @@ export class EnqueteAppAPIClass {
         }
       `
       await API.graphql(graphqlOperation(gqlParam))
+      alert("Sent Answers Succeeded")
     } catch (err) {
       console.error(err)
+      alert("Sent Answers Failed")
     }
   }
 
@@ -124,7 +128,7 @@ export class EnqueteAppAPIClass {
       `
       const result: QueryEnqueteAnswerResultType
         = await API.graphql(graphqlOperation(gqlParam)) as QueryEnqueteAnswerResultType
-      console.log(result)
+      return result.data.queryEnqueteAnswers.items
     } catch (err) {
       console.error(err)
     }

@@ -1,14 +1,16 @@
 import { Component, Vue, Watch } from "vue-property-decorator"
 import { EnqueteAppAPIClass } from "@/gqlServices/enquete_app_api_service"
 import {
-  EnqueteType
+  EnqueteType,
+  EnqueteAnswerType
 } from "@/types"
 import router from "@/router"
 
 @Component({})
-export default class Enquete extends Vue {
+export default class Result extends Vue {
   public enquete: EnqueteType = null
   public enqueteId: string = ""
+  public enqueteAnswers: EnqueteAnswerType[] = []
   public enqueteTitle: string = ""
   public description: string = ""
   public answerItems: string[] = []
@@ -28,16 +30,11 @@ export default class Enquete extends Vue {
     if (this.enquete === null) {
       router.push("/")
     }
+    this.enqueteAnswers = await EnqueteAppAPIClass.queryEnqueteAnswer(this.enqueteId)
+    this.calcEnqueteAnswer()
   }
 
-  /**
-   * アンケート回答
-   */
-  public async submitAnswers() {
-    if (this.selectedAnswers.length > 0) {
-      EnqueteAppAPIClass.createEnqueteAnswer(this.enqueteId, this.selectedAnswers)
-    } else {
-      alert("Please select one or more answers")
-    }
+  public calcEnqueteAnswer() {
+    console.log(this.enqueteAnswers)
   }
 }

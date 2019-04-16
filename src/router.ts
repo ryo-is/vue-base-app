@@ -3,6 +3,7 @@ import Router from "vue-router"
 import Home from "./views/home/Home.vue"
 import Create from "./views/create/Create.vue"
 import Enquete from "./views/enquete/Enquete.vue"
+import Result from "./views/result/Result.vue"
 
 Vue.use(Router);
 
@@ -24,6 +25,11 @@ export default new Router({
       path: "/enquete/:enquete_id",
       name: "enquete",
       component: Enquete,
+    },
+    {
+      path: "/result/:enquete_id",
+      name: "result",
+      component: Result,
     }
   ],
 });

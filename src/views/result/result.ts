@@ -34,6 +34,7 @@ export default class Result extends Vue {
     this.enqueteAnswers = await EnqueteAppAPIClass.queryEnqueteAnswer(this.enqueteId)
     this.initEnqueteAnswer()
     this.calcEnqueteAnswer()
+    EnqueteAppAPIClass.createEnqueteSubscriber(this)
   }
 
   /**

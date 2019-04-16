@@ -4,8 +4,11 @@ import {
   EnqueteType,
   CreateEnqueteResultType,
   GetEnqueteResultType,
+  EnqueteAnswerType,
   QueryEnqueteAnswerResultType
 } from "@/types"
+import Observable from "zen-observable";
+import Result from "@/views/Result.vue"
 
 const enqueteItems: string = `
 id
@@ -132,6 +135,30 @@ export class EnqueteAppAPIClass {
     } catch (err) {
       console.error(err)
     }
+  }
+
+  public static async createEnqueteSubscriber(self: Result) {
+    const gqlParam: string = `
+      subscription createEnqueteSubscriber {
+        onCreateEnqueteAnswer(id: "${self.$data.enqueteId}") {
+          ${enqueteAnswerItems}
+        }
+      }
+    `
+    const createEnqueteObservable: Observable<object>
+      = await API.graphql(graphqlOperation(gqlParam, { deleted: false })) as Observable<object>
+    return createEnqueteObservable.subscribe({
+      next: (result: any) => {
+        const newAnswer: EnqueteAnswerType = result.value.data.onCreateEnqueteAnswer
+        console.log(newAnswer)
+        newAnswer.answers.forEach((value: string) => {
+          self.$data.answerNumbers[value] += 1
+        })
+      },
+      error: (err: any) => {
+        console.error(err)
+      }
+    })
   }
 
   /**

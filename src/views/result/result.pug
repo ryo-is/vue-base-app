@@ -1,3 +1,10 @@
 .result
   .result-title {{ enqueteTitle }}
   .result-description {{ description }}
+  .enquete-answers-area
+    el-row.enquete-answer-header
+      el-col(:span="12").name Answer
+      el-col(:span="12").answer-number Number of Answers
+    el-row.enquete-answer(v-for="answerNumber, index in answerNumbers", :key="index")
+      el-col.name(:span="12") {{ index }}
+      el-col.answer-number(:span="12") {{ answerNumber }}

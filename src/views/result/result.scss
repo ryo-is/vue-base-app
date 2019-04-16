@@ -15,4 +15,18 @@
     font-size: 1.25rem;
     margin: 20px 0;
   }
+
+  .enquete-answers-area {
+    font-size: 1.2rem;
+
+    .enquete-answer-header {
+      border-bottom: 2px solid $basic-green-color;
+      line-height: 50px;
+      margin-bottom: 8px;
+    }
+
+    .el-row {
+      line-height: 40px;
+    }
+  }
 }

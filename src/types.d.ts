@@ -31,3 +31,8 @@ export interface QueryEnqueteAnswerResultType {
     }
   }
 }
+
+export interface AnswerNumbersType {
+  name: string
+  answerNumber: number
+}

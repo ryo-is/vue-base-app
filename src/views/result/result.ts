@@ -16,6 +16,7 @@ export default class Result extends Vue {
   public answerItems: string[] = []
   public selectableNumber: number = 0
   public selectedAnswers: string[] = []
+  public answerNumbers: {[key: string]: number} = {}
 
   @Watch("enquete") public watchEnquete() {
     this.enqueteTitle = this.enquete.enqueteTitle
@@ -31,10 +32,29 @@ export default class Result extends Vue {
       router.push("/")
     }
     this.enqueteAnswers = await EnqueteAppAPIClass.queryEnqueteAnswer(this.enqueteId)
+    this.initEnqueteAnswer()
     this.calcEnqueteAnswer()
   }
 
+  /**
+   * 回答集計の初期化
+   */
+  public initEnqueteAnswer() {
+    const initAnswerNumbers: {[key: string]: number} = {}
+    this.answerItems.forEach((item: string) => {
+      initAnswerNumbers[item] = 0
+    })
+    this.answerNumbers = initAnswerNumbers
+  }
+
+  /**
+   * 回答集計
+   */
   public calcEnqueteAnswer() {
-    console.log(this.enqueteAnswers)
+    this.enqueteAnswers.forEach((item: EnqueteAnswerType) => {
+      item.answers.forEach((value: string) => {
+        this.answerNumbers[value] += 1
+      })
+    })
   }
 }

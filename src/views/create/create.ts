@@ -4,7 +4,7 @@ import router from "@/router"
 
 @Component({})
 export default class Create extends Vue {
-  public title: string = "Create Enquete Page"
+  public title: string = "アンケート作成"
   public enqueteTitle: string = ""
   public description: string = ""
   public answerItems: string[] = []

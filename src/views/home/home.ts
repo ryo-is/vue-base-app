@@ -3,7 +3,7 @@ import router from "@/router";
 
 @Component({})
 export default class Home extends Vue {
-  public title: string = "Vue Enquete App"
+  public title: string = "アンケートさん"
 
   public linkCreatePage() {
     router.push("/create")

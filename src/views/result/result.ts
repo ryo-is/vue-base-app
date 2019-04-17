@@ -38,6 +38,13 @@ export default class Result extends Vue {
   }
 
   /**
+   * Topページに戻る
+   */
+  public returnTopPage() {
+    return router.push("/")
+  }
+
+  /**
    * 回答集計の初期化
    */
   public initEnqueteAnswer() {

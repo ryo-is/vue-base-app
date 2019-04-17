@@ -21,6 +21,9 @@
           el-col.text(:xs="12", :sm="8", :md="8", :lg="8", :xl="8") 選択できる選択肢の数:
           el-col(:span="4")
             el-input(type="number", v-model="selectableNumber", min="1", :max="answerItems.length")
-      el-button.submit-button(type="primary" @click="submitCreateEnquete()") 作成する
+      .submit-btn-wrapper
+        el-button.submit-button(type="primary" @click="submitCreateEnquete()") 作成する
+      .submit-btn-wrapper
+        el-button.submit-button(type="info", @click="returnTopPage()") トップに戻る
 
 

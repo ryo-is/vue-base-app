@@ -32,6 +32,13 @@ export default class Enquete extends Vue {
   }
 
   /**
+   * Topページに戻る
+   */
+  public returnTopPage() {
+    return router.push("/")
+  }
+
+  /**
    * アンケート回答
    */
   public async submitAnswers() {

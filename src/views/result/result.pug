@@ -8,3 +8,5 @@
     el-row.enquete-answer(v-for="answerNumber, index in answerNumbers", :key="index")
       el-col.name(:span="12") {{ index }}
       el-col.answer-number(:span="12") {{ answerNumber }}
+  .submit-btn-wrapper
+    el-button.submit-button(type="info", @click="returnTopPage()") トップに戻る

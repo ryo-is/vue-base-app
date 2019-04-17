@@ -12,6 +12,13 @@ export default class Create extends Vue {
   public selectableNumber: number = 1
 
   /**
+   * Topページに戻る
+   */
+  public returnTopPage() {
+    return router.push("/")
+  }
+
+  /**
    * 選択肢の追加
    */
   public addAnswerItem() {

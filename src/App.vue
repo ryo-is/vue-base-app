@@ -3,6 +3,35 @@
     router-view
 </template>
 
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator"
+import {
+  EnqueteHistoriesType
+} from "@/types"
+
+@Component({})
+export default class App extends Vue {
+
+  public created() {
+    const enqueteHistories: EnqueteHistoriesType | null = JSON.parse(localStorage.getItem("history"))
+    if (enqueteHistories === null) {
+      this.initEnqueteHistories()
+    }
+  }
+
+  /**
+   * アンケート履歴の初期化
+   */
+  public initEnqueteHistories() {
+    const initHistories: EnqueteHistoriesType = {
+      enqueteIds: []
+    }
+    localStorage.setItem("history", JSON.stringify(initHistories))
+  }
+}
+</script>
+
+
 <style lang="scss">
 @import "./config/config_setting";
 

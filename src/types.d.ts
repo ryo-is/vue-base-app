@@ -36,3 +36,7 @@ export interface AnswerNumbersType {
   name: string
   answerNumber: number
 }
+
+export interface EnqueteHistoriesType {
+  enqueteIds: string[]
+}

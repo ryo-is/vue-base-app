@@ -1,12 +1,13 @@
 import { Component, Vue } from "vue-property-decorator"
 import { EnqueteAppAPIClass } from "@/gqlServices/enquete_app_api_service"
+import router from "@/router"
 
 @Component({})
 export default class Create extends Vue {
   public title: string = "Create Enquete Page"
-  public enqueteTitle: string = "好きな果物は？"
-  public description: string = "次の中から最も好きな果物を答えてください"
-  public answerItems: string[] = ["りんご", "バナナ", "オレンジ"]
+  public enqueteTitle: string = ""
+  public description: string = ""
+  public answerItems: string[] = []
   public addAnswerItemText: string = ""
   public selectableNumber: number = 1
 
@@ -14,15 +15,18 @@ export default class Create extends Vue {
    * 選択肢の追加
    */
   public addAnswerItem() {
-    this.answerItems.push(this.addAnswerItemText)
-    this.addAnswerItemText = ""
+    if (this.addAnswerItemText !== "") {
+      this.answerItems.push(this.addAnswerItemText)
+      this.addAnswerItemText = ""
+    }
   }
 
   /**
    * アンケート作成
    */
-  public submitCreateEnquete() {
-    EnqueteAppAPIClass.createEnquete(
+  public async submitCreateEnquete() {
+    const enqueteId: string = await EnqueteAppAPIClass.createEnquete(
       this.enqueteTitle, this.description, this.answerItems, this.selectableNumber)
+    return router.push("/enquete/" + enqueteId)
   }
 }

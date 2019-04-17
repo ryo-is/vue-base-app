@@ -54,8 +54,9 @@ export class EnqueteAppAPIClass {
           }
         }
       `
-      await API.graphql(graphqlOperation(gqlParam)) as CreateEnqueteResultType
+      const result: CreateEnqueteResultType = await API.graphql(graphqlOperation(gqlParam)) as CreateEnqueteResultType
       alert("Create Answers Succeeded")
+      return result.data.createEnquete.id
     } catch (err) {
       console.error(err)
       alert("Create Answers Failed")

@@ -19,7 +19,14 @@
 
   .enquete-history-area {
     margin: auto;
-    width: 60%;
+
+    .enquete-history-wrapper {
+      left: 0;
+      margin: auto;
+      padding: 0;
+      position: absolute;
+      right: 0;
+    }
 
     .el-col {
       padding: 20px;

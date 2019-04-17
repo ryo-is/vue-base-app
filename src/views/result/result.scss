@@ -1,8 +1,10 @@
 @import "../../config/config_setting.scss";
 
 .result {
+  left: 0;
   margin: 30px auto 0;
-  width: 50vw;
+  position: absolute;
+  right: 0;
 
   .result-title {
     border-bottom: 3px solid $basic-green-color;

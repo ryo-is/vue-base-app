@@ -138,6 +138,10 @@ export class EnqueteAppAPIClass {
     }
   }
 
+  /**
+   * アンケート回答に対するSubscriber
+   * @param {Result} self
+   */
   public static async createEnqueteSubscriber(self: Result) {
     const gqlParam: string = `
       subscription createEnqueteSubscriber {

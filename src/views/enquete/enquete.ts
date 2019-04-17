@@ -35,7 +35,8 @@ export default class Enquete extends Vue {
    */
   public async submitAnswers() {
     if (this.selectedAnswers.length > 0) {
-      EnqueteAppAPIClass.createEnqueteAnswer(this.enqueteId, this.selectedAnswers)
+      await EnqueteAppAPIClass.createEnqueteAnswer(this.enqueteId, this.selectedAnswers)
+      this.selectedAnswers = []
     } else {
       alert("Please select one or more answers")
     }

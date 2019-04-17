@@ -1,3 +1,14 @@
 .home
   .title {{ title }}
   el-button.create-page-btn(type="primary" @click="linkCreatePage") アンケートを作成する
+  .history-title 過去に回答したことがあるアンケート
+  el-row.enquete-history-area
+    el-col(:span="12",
+      v-for="enquete in enqueteHistories",
+      :key="enquete.id")
+      .enquete-history
+        .enquete-history-title {{ enquete.enqueteTitle }}
+        .enquete-description {{ enquete.description }}
+        .button-area
+          el-button(type="primary", @click="linkEnquetePage(enquete.id)") 回答する
+          el-button(type="warning", @click="linkResultPage(enquete.id)") 結果を見る

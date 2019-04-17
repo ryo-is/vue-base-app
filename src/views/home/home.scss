@@ -1,3 +1,5 @@
+@import "../../config/config_setting.scss";
+
 .home {
   .title {
     font-size: 2rem;
@@ -8,5 +10,43 @@
     font-size: 1.1rem;
     margin-top: 30px;
     padding: 15px 40px;
+  }
+
+  .history-title {
+    font-size: 1.2rem;
+    margin: 40px 0 30px;
+  }
+
+  .enquete-history-area {
+    margin: auto;
+    width: 60%;
+
+    .el-col {
+      padding: 20px;
+    }
+
+    .enquete-history {
+      background-color: $basic-light-color;
+      border-radius: 5px;
+      color: $basic-dark-color;
+      font-size: 1.1rem;
+      padding: 20px;
+      text-align: left;
+
+      .enquete-history-title {
+        border-bottom: 3px solid $basic-green-color;
+        font-size: 1.3rem;
+        line-height: 40px;
+        padding-left: 1rem;
+      }
+
+      .enquete-description {
+        padding: 1rem;
+      }
+
+      .button-area {
+        text-align: right;
+      }
+    }
   }
 }

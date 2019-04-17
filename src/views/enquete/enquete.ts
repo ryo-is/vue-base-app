@@ -1,7 +1,8 @@
 import { Component, Vue, Watch } from "vue-property-decorator"
 import { EnqueteAppAPIClass } from "@/gqlServices/enquete_app_api_service"
 import {
-  EnqueteType
+  EnqueteType,
+  EnqueteHistoriesType
 } from "@/types"
 import router from "@/router"
 
@@ -37,6 +38,11 @@ export default class Enquete extends Vue {
     if (this.selectedAnswers.length > 0) {
       await EnqueteAppAPIClass.createEnqueteAnswer(this.enqueteId, this.selectedAnswers)
       this.selectedAnswers = []
+      const enqueteHistories: EnqueteHistoriesType | null = JSON.parse(localStorage.getItem("history"))
+      if (enqueteHistories.enqueteIds.indexOf(this.enqueteId) < 0) {
+        enqueteHistories.enqueteIds.push(this.enqueteId)
+      }
+      localStorage.setItem("history", JSON.stringify(enqueteHistories))
     } else {
       alert("Please select one or more answers")
     }

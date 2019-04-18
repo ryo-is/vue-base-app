@@ -8,7 +8,7 @@ import {
 
 @Component({})
 export default class Home extends Vue {
-  public title: string = "アンケートさん"
+  public title: string = "アンケート作るんです。"
   public enqueteHistories: EnqueteType[] = []
 
   public async created() {

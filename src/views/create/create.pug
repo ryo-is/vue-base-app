@@ -23,7 +23,7 @@
             el-input(type="number", v-model="selectableNumber", min="1", :max="answerItems.length")
       .input.enquete-url-area(v-show="enqueteUrlArea")
         .tag アンケートURL
-        .url {{ enquerePageUrl }}
+        .url(@click="linkEnquetePage()") {{ enquerePageUrl }}
       .submit-btn-wrapper
         el-button.submit-button(type="primary", @click="submitCreateEnquete()", v-show="!enqueteUrlArea") 作成する
       .submit-btn-wrapper

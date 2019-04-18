@@ -31,6 +31,14 @@
           margin: auto;
           width: 95%;
         }
+
+        .url {
+          cursor: pointer;
+
+          &:hover {
+            text-decoration: underline
+          }
+        }
       }
 
       .enquete-url-area {

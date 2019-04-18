@@ -5,6 +5,7 @@ import router from "@/router"
 @Component({})
 export default class Create extends Vue {
   public title: string = "アンケート作成"
+  public enqueteId: string = ""
   public enqueteTitle: string = ""
   public description: string = ""
   public answerItems: string[] = []
@@ -34,18 +35,28 @@ export default class Create extends Vue {
    * アンケート作成
    */
   public async submitCreateEnquete() {
-    const enqueteId: string = await EnqueteAppAPIClass.createEnquete(
+    this.enqueteId = await EnqueteAppAPIClass.createEnquete(
       this.enqueteTitle, this.description, this.answerItems, this.selectableNumber)
-    this.enquerePageUrl = location.origin + "/enquete/" + enqueteId
+    this.enquerePageUrl = location.origin + "/enquete/" + this.enqueteId
     this.enqueteUrlArea = true
     // return router.push("/enquete/" + enqueteId)
   }
 
+  /**
+   * 入力内容の初期化
+   */
   public resetInputArea() {
     this.enqueteTitle = ""
     this.description = ""
     this.answerItems = []
     this.enquerePageUrl = ""
     this.enqueteUrlArea = false
+  }
+
+  /**
+   * アンケート回答ページに遷移
+   */
+  public linkEnquetePage() {
+    return router.push("/enquete/" + this.enqueteId)
   }
 }

@@ -35,8 +35,12 @@ export default class Create extends Vue {
    * アンケート作成
    */
   public async submitCreateEnquete() {
-    if (this.answerItems.length <= 0) {
-       return alert("選択肢は必ず1つ以上必要です")
+    if (this.enqueteTitle === "") {
+      return alert("タイトルは必須です")
+    } else if (this.description === "") {
+      return alert("説明は必須です")
+    } else if (this.answerItems.length <= 0) {
+      return alert("選択肢は必ず1つ以上必要です")
     }
     this.enqueteId = await EnqueteAppAPIClass.createEnquete(
       this.enqueteTitle, this.description, this.answerItems, this.selectableNumber)

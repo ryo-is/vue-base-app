@@ -3,13 +3,13 @@
   form.create-vote-form()
     el-col.input-area(:xs="22", :sm="20", :md="16", :lg="13", :xl="11")
       .input(v-show="!enqueteUrlArea")
-        .tag タイトル
+        .tag タイトル*
         el-input(type="text", v-model="enqueteTitle")
       .input(v-show="!enqueteUrlArea")
-        .tag 説明
+        .tag 説明*
         el-input(type="text", v-model="description")
       .input(v-show="!enqueteUrlArea")
-        .tag 選択肢
+        .tag 選択肢*
         .answer-items
           .answer(v-for="item, index in answerItems", :key="item") {{ item }}
         el-row.add-answer-area

@@ -51,7 +51,7 @@ export default class Enquete extends Vue {
       }
       localStorage.setItem("history", JSON.stringify(enqueteHistories))
     } else {
-      alert("Please select one or more answers")
+      alert("必ず1つ以上選択してください")
     }
   }
 }

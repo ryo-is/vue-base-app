@@ -55,11 +55,11 @@ export class EnqueteAppAPIClass {
         }
       `
       const result: CreateEnqueteResultType = await API.graphql(graphqlOperation(gqlParam)) as CreateEnqueteResultType
-      alert("Create Answers Succeeded")
+      alert("アンケートを作成しました")
       return result.data.createEnquete.id
     } catch (err) {
       console.error(err)
-      alert("Create Answers Failed")
+      alert("失敗しました")
     }
   }
 
@@ -108,10 +108,10 @@ export class EnqueteAppAPIClass {
         }
       `
       await API.graphql(graphqlOperation(gqlParam))
-      alert("Sent Answers Succeeded")
+      alert("回答を送信しました")
     } catch (err) {
       console.error(err)
-      alert("Sent Answers Failed")
+      alert("回答の送信に失敗しました")
     }
   }
 

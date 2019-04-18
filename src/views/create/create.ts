@@ -35,6 +35,9 @@ export default class Create extends Vue {
    * アンケート作成
    */
   public async submitCreateEnquete() {
+    if (this.answerItems.length <= 0) {
+       return alert("選択肢は必ず1つ以上必要です")
+    }
     this.enqueteId = await EnqueteAppAPIClass.createEnquete(
       this.enqueteTitle, this.description, this.answerItems, this.selectableNumber)
     this.enquerePageUrl = location.origin + "/enquete/" + this.enqueteId
